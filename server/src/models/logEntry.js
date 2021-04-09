@@ -22,12 +22,13 @@ const logEntrySchema = new Schema(
       required: true,
     },
     Image: String,
-    latitude: { type: Number, required: true },
-    longitude: { type: Number, required: true },
+    latitude: { type: Number, required: true, min: -90, max: 90 },
+    longitude: { type: Number, required: true, min: -180, max: 180 },
   },
   {
     timestamp: true,
   }
 );
 
-module.exports = logEntrySchema;
+const LogEntry = mongoose.model('LogEntry', logEntrySchema);
+module.exports = LogEntry;
