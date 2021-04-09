@@ -2,14 +2,32 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
-
+const mongoose = require('mongoose');
 const port = process.env.PORT || 1337;
 const app = express();
+require('dotenv').config();
+
+// database connection settings
+
+try {
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
+  console.log('Database connected');
+} catch (error) {
+  throw error;
+}
 
 // Middlewares
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 
 app.use((req, res, next) => {
   const error = new Error(`not Found - ${req.originalUrl}`);
