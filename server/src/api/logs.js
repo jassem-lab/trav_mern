@@ -8,12 +8,24 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const entries = await logEntrySchema.find();
+    res.json(entries);
+  } catch (error) {
+    throw error;
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const logEntry = new logEntrySchema(req.body);
     const createdEntry = await logEntry.save();
     res.json(createdEntry);
   } catch (error) {
+    if (error.name === 'validationError') {
+      res.status(422);
+    }
     throw error;
   }
 });

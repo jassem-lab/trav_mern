@@ -15,7 +15,7 @@ A full stack application to store / list places you have traveled.
 ✔ Setup Mongoose Model(s) @done(21-04-09 03:34)
 ✔ POST /log @done(21-04-09 03:58)
  *create a new log entry
-☐ Get /logs
+✔ Get /logs @done(21-04-09 04:27)
  * List all log entries
 ☐ Setup Client
 ☐ Create Form to add a new entry
