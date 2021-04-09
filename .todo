@@ -9,7 +9,7 @@ A full stack application to store / list places you have traveled.
 ✔ Setup Server @done(21-04-09 01:31)
     ✔ Install dep @done(21-04-09 01:32)
     ✔ Setup Express App @done(21-04-09 01:32)
-    ☐ Setup Not Found and middlewares
+    ✔ Setup Not Found and middlewares @done(21-04-09 02:34)
 ☐  Model DB 
  * what data will we store ? 
 ☐ Setup Mongoose Model(s)
