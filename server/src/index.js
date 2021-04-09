@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 1337;
 const app = express();
+const logs = require('./api/logs');
 require('dotenv').config();
 
 // database connection settings
@@ -21,6 +22,7 @@ try {
 }
 
 // Middlewares
+app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
 app.use(
@@ -28,6 +30,17 @@ app.use(
     origin: process.env.CORS_ORIGIN,
   })
 );
+
+// APIs
+app.get('/', (req, res) => {
+  res.json({
+    message: ' ✖ hello world ! ✖ ',
+  });
+});
+
+app.use('/api/logs', logs);
+
+// Middlware v2
 
 app.use((req, res, next) => {
   const error = new Error(`not Found - ${req.originalUrl}`);
@@ -41,13 +54,6 @@ app.use((error, req, res, next) => {
   res.json({
     message: error.message,
     stack: process.env.NODE_ENV === 'production' ? '🚀' : error.stack,
-  });
-});
-
-// APIs
-app.get('/', (req, res) => {
-  res.json({
-    message: ' ✖ hello world ! ✖ ',
   });
 });
 // Start server

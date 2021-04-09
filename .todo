@@ -13,7 +13,7 @@ A full stack application to store / list places you have traveled.
 ✔  Model DB @done(21-04-09 03:33)
  * what data will we store ? 
 ✔ Setup Mongoose Model(s) @done(21-04-09 03:34)
-☐ POST /log
+✔ POST /log @done(21-04-09 03:58)
  *create a new log entry
 ☐ Get /logs
  * List all log entries
