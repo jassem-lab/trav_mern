@@ -1,10 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { listLogEntries } from './API';
 
 const App = () => {
+  const [logEntries, setLogEntries] = useState([]);
   const [viewport, setViewport] = useState({
     width: '100vh',
     height: '100vw',
@@ -15,7 +16,8 @@ const App = () => {
   useEffect(() => {
     (async () => {
       const logEntries = await listLogEntries();
-      console.log(logEntries);
+      setLogEntries(logEntries);
+      // console.log(logEntries);
     })();
   }, []);
   return (
@@ -26,7 +28,19 @@ const App = () => {
         mapStyle='mapbox://styles/jassemdev/cknb2b2660b6117nzjxppgoqm'
         onViewportChange={setViewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-      />
+      >
+        {logEntries.map((entry) => (
+          <Marker
+            key={entry._id}
+            latitude={entry.latitude}
+            longitude={entry.longitude}
+            offsetLeft={-20}
+            offsetTop={-10}
+          >
+            <div>{entry.title}</div>
+          </Marker>
+        ))}
+      </ReactMapGL>
     </div>
   );
 };

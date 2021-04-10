@@ -23,7 +23,7 @@ try {
 
 // Middlewares
 app.use(express.json());
-app.use(morgan('common'));
+app.use(morgan('tiny'));
 app.use(helmet());
 app.use(
   cors({
