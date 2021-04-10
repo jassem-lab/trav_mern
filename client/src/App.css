@@ -1,4 +1,3 @@
 .Marker {
-  stroke: #f8c102;
-  color: white;
+  transform: translate(-50%, -100%);
 }
