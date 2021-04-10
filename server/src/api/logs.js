@@ -2,11 +2,11 @@ const { Router } = require('express');
 const logEntrySchema = require('../models/logEntry');
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    message: '🌺 hello world',
-  });
-});
+// router.get('/', (req, res) => {
+//   res.json({
+//     message: '🌺 hello world',
+//   });
+// });
 
 router.get('/', async (req, res) => {
   try {

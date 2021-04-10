@@ -19,5 +19,6 @@ A full stack application to store / list places you have traveled.
  * List all log entries
 ✔ Setup Client @done(21-04-10 01:36)
 ✔ Setup Map SDK on client @done(21-04-10 02:28)
+✔ Setup Api and fetch data from server @done(21-04-10 02:47)
 ☐ Create Form to add a new entry
 ☐ List all
